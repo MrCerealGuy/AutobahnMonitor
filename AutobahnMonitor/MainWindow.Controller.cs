@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+﻿using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
 
 using static AutobahnMonitor.MyGlobals;
@@ -19,6 +8,28 @@ namespace AutobahnMonitor
 {
     public partial class AutobahnMonitor : Form
     {
+        private void InitAutobahnUI()
+        {
+            // Init roads
+            var jsonRoads = curlRequest(serverUri + "/");
+
+            jsonDeserializedRoads = deserializeJSONRoads(jsonRoads);
+
+            foreach (var road in jsonDeserializedRoads.roads)
+                comboBoxRoad.Items.Add(road.ToString());
+
+            comboBoxRoad.SelectedIndex = 0;
+
+            // Init services
+            foreach (var service in services)
+                comboBoxService.Items.Add(service.Value.deDescription);
+
+            comboBoxService.SelectedIndex = 0;
+
+            // Query service from selected road
+            queryServiceFromRoad(comboBoxRoad.SelectedItem.ToString(), comboBoxService.SelectedItem.ToString());
+        }
+
         private void queryServiceFromRoad(string road, string service)
         {
             listBoxObjects.Items.Clear();

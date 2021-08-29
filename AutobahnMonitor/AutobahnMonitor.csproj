@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutobahnMonitor.Globals.cs" />
     <Compile Include="MainWindow.Controller.cs">
       <SubType>Form</SubType>
     </Compile>

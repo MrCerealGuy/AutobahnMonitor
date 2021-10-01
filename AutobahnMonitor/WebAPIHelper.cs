@@ -56,6 +56,17 @@ namespace AutobahnMonitor
                 public Array webcams { get; set; }
             }
 
+            public class JSONParkingLorries
+            {
+                public JSONParkingLorries(string json)
+                {
+                    JObject jObject = JObject.Parse(json);
+                    parking_lorries = jObject["parking_lorry"].ToArray();
+                }
+
+                public Array parking_lorries { get; set; }
+            }
+
             public static string curlRequest(string url)
             {
                 var httpRequest = (HttpWebRequest)WebRequest.Create(url);
@@ -97,6 +108,11 @@ namespace AutobahnMonitor
             public static JSONWebcams deserializeJSONWebcams(string json)
             {
                 return new JSONWebcams(json);
+            }
+
+            public static JSONParkingLorries deserializeJSONParkingLorries(string json)
+            {
+                return new JSONParkingLorries(json);
             }
 
             public static string queryJSONServiceFromRoad(string road, string service)

@@ -67,6 +67,17 @@ namespace AutobahnMonitor
                 public Array parking_lorries { get; set; }
             }
 
+            public class JSONClosures
+            {
+                public JSONClosures(string json)
+                {
+                    JObject jObject = JObject.Parse(json);
+                    closures = jObject["closure"].ToArray();
+                }
+
+                public Array closures { get; set; }
+            }
+
             public static string curlRequest(string url)
             {
                 var httpRequest = (HttpWebRequest)WebRequest.Create(url);
@@ -114,6 +125,12 @@ namespace AutobahnMonitor
             {
                 return new JSONParkingLorries(json);
             }
+
+            public static JSONClosures deserializeJSONClosures(string json)
+            {
+                return new JSONClosures(json);
+            }
+
 
             public static string queryJSONServiceFromRoad(string road, string service)
             {

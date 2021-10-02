@@ -63,6 +63,15 @@ namespace AutobahnMonitor
                 foreach (var parking_lorry in jsonDeserializedParkingLorries.parking_lorries)
                     listBoxObjects.Items.Add(JObject.Parse(parking_lorry.ToString())["title"].ToString() + " - " + JObject.Parse(parking_lorry.ToString())["subtitle"].ToString());
             }
+            else if (service.Equals("Sperrungen"))
+            {
+                string jsonClosures = queryJSONServiceFromRoad(road, service);
+
+                jsonDeserializedClosures = deserializeJSONClosures(jsonClosures);
+
+                foreach (var closure in jsonDeserializedClosures.closures)
+                    listBoxObjects.Items.Add(JObject.Parse(closure.ToString())["title"].ToString() + " - " + JObject.Parse(closure.ToString())["subtitle"].ToString());
+            }
 
             if (listBoxObjects.Items.Count > 0)
                 listBoxObjects.SelectedIndex = 0;
@@ -107,6 +116,21 @@ namespace AutobahnMonitor
                 var subtitle = JObject.Parse(parking_lorry.ToString())["subtitle"].ToString();
                 var description = JObject.Parse(parking_lorry.ToString())["description"].ToString();
                 var coordinate = JObject.Parse(parking_lorry.ToString())["coordinate"].ToString();
+                var lat = JObject.Parse(coordinate)["lat"].ToString();
+                var longitude = JObject.Parse(coordinate)["long"].ToString();
+
+                richTextBoxObjectDetails.Text = $"Titel: {title}\nUntertitel:{subtitle}\n\nBeschreibung:{description}\n\nKoordinaten:{lat} (Lat.), {longitude} (Long.)";
+
+                // Update GIS
+                updateWebcamAndGIS("", "", lat, longitude);
+            }
+            else if (service.Equals("Sperrungen"))
+            {
+                var closure = jsonDeserializedClosures.closures.GetValue(listBoxObjects.SelectedIndex);
+                var title = JObject.Parse(closure.ToString())["title"].ToString();
+                var subtitle = JObject.Parse(closure.ToString())["subtitle"].ToString();
+                var description = JObject.Parse(closure.ToString())["description"].ToString();
+                var coordinate = JObject.Parse(closure.ToString())["coordinate"].ToString();
                 var lat = JObject.Parse(coordinate)["lat"].ToString();
                 var longitude = JObject.Parse(coordinate)["long"].ToString();
 

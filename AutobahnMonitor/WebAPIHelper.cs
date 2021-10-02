@@ -78,6 +78,17 @@ namespace AutobahnMonitor
                 public Array closures { get; set; }
             }
 
+            public class JSONElectricChargingStations
+            {
+                public JSONElectricChargingStations(string json)
+                {
+                    JObject jObject = JObject.Parse(json);
+                    electric_charging_stations = jObject["electric_charging_station"].ToArray();
+                }
+
+                public Array electric_charging_stations { get; set; }
+            }
+
             public static string curlRequest(string url)
             {
                 var httpRequest = (HttpWebRequest)WebRequest.Create(url);
@@ -131,6 +142,10 @@ namespace AutobahnMonitor
                 return new JSONClosures(json);
             }
 
+            public static JSONElectricChargingStations deserializeJSONElectricChargingStations(string json)
+            {
+                return new JSONElectricChargingStations(json);
+            }
 
             public static string queryJSONServiceFromRoad(string road, string service)
             {

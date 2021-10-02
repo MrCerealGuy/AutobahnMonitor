@@ -15,6 +15,7 @@ namespace AutobahnMonitor
         public static JSONWebcams jsonDeserializedWebcams;
         public static JSONParkingLorries jsonDeserializedParkingLorries;
         public static JSONClosures jsonDeserializedClosures;
+        public static JSONElectricChargingStations jsonDeserializedElectricChargingStations;
 
         public static readonly Dictionary<string, AutobahnAPIService> services = new Dictionary<string, AutobahnAPIService> {
             { "Webcams", new AutobahnAPIService()
@@ -47,6 +48,14 @@ namespace AutobahnMonitor
                     enDescription = "closure",
                     serviceUri = "/{roadId}/services/closure",
                     detailsUri = "/details/closure/{closureId}"
+                }
+            },
+            {"Ladestationen", new AutobahnAPIService()
+                {
+                    deDescription = "Ladestationen",
+                    enDescription = "electric_charging_station",
+                    serviceUri = "/{roadId}/services/electric_charging_station",
+                    detailsUri = "/details/electric_charging_station/{stationId}"
                 }
             }
         };

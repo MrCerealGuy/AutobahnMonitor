@@ -72,6 +72,15 @@ namespace AutobahnMonitor
                 foreach (var closure in jsonDeserializedClosures.closures)
                     listBoxObjects.Items.Add(JObject.Parse(closure.ToString())["title"].ToString() + " - " + JObject.Parse(closure.ToString())["subtitle"].ToString());
             }
+            else if (service.Equals("Ladestationen"))
+            {
+                string jsonStations = queryJSONServiceFromRoad(road, service);
+
+                jsonDeserializedElectricChargingStations = deserializeJSONElectricChargingStations(jsonStations);
+
+                foreach (var station in jsonDeserializedElectricChargingStations.electric_charging_stations)
+                    listBoxObjects.Items.Add(JObject.Parse(station.ToString())["title"].ToString() + " - " + JObject.Parse(station.ToString())["subtitle"].ToString());
+            }
 
             if (listBoxObjects.Items.Count > 0)
                 listBoxObjects.SelectedIndex = 0;
@@ -83,12 +92,14 @@ namespace AutobahnMonitor
             if (service.Equals("Baustellen"))
             {
                 var roadwork = jsonDeserializedRoadworks.roadworks.GetValue(listBoxObjects.SelectedIndex);
-                var details = JObject.Parse(roadwork.ToString())["description"].ToString();
+                var title = JObject.Parse(roadwork.ToString())["title"].ToString();
+                var subtitle = JObject.Parse(roadwork.ToString())["subtitle"].ToString();
+                var description = JObject.Parse(roadwork.ToString())["description"].ToString();
                 var coordinate = JObject.Parse(roadwork.ToString())["coordinate"].ToString();
                 var lat = JObject.Parse(coordinate)["lat"].ToString();
                 var longitude = JObject.Parse(coordinate)["long"].ToString();
 
-                richTextBoxObjectDetails.Text = details;
+                richTextBoxObjectDetails.Text = $"Titel: {title}\nUntertitel:{subtitle}\n\nBeschreibung:{description}\n\nKoordinaten:{lat} (Lat.), {longitude} (Long.)";
 
                 // Update GIS
                 updateWebcamAndGIS("", "", lat, longitude);
@@ -131,6 +142,21 @@ namespace AutobahnMonitor
                 var subtitle = JObject.Parse(closure.ToString())["subtitle"].ToString();
                 var description = JObject.Parse(closure.ToString())["description"].ToString();
                 var coordinate = JObject.Parse(closure.ToString())["coordinate"].ToString();
+                var lat = JObject.Parse(coordinate)["lat"].ToString();
+                var longitude = JObject.Parse(coordinate)["long"].ToString();
+
+                richTextBoxObjectDetails.Text = $"Titel: {title}\nUntertitel:{subtitle}\n\nBeschreibung:{description}\n\nKoordinaten:{lat} (Lat.), {longitude} (Long.)";
+
+                // Update GIS
+                updateWebcamAndGIS("", "", lat, longitude);
+            }
+            else if (service.Equals("Ladestationen"))
+            {
+                var station = jsonDeserializedElectricChargingStations.electric_charging_stations.GetValue(listBoxObjects.SelectedIndex);
+                var title = JObject.Parse(station.ToString())["title"].ToString();
+                var subtitle = JObject.Parse(station.ToString())["subtitle"].ToString();
+                var description = JObject.Parse(station.ToString())["description"].ToString();
+                var coordinate = JObject.Parse(station.ToString())["coordinate"].ToString();
                 var lat = JObject.Parse(coordinate)["lat"].ToString();
                 var longitude = JObject.Parse(coordinate)["long"].ToString();
 

@@ -5,17 +5,9 @@ namespace AutobahnMonitor
 {
     public static partial class MyGlobals
     {
-        //readonly List<string> sources = new List<string> {
-        //    "Autobahnen", "Baustellen", "Staus", "Rastplätze", "Webcams", "Verkehrsmeldungen", "Sperrungen", "Ladestationen" };
-
         public static readonly string serverUri = "https://verkehr.autobahn.de/o/autobahn";
 
-        public static JSONRoads jsonDeserializedRoads;
-        public static JSONRoadworks jsonDeserializedRoadworks;
-        public static JSONWebcams jsonDeserializedWebcams;
-        public static JSONParkingLorries jsonDeserializedParkingLorries;
-        public static JSONClosures jsonDeserializedClosures;
-        public static JSONElectricChargingStations jsonDeserializedElectricChargingStations;
+        public static Dictionary<string, JSONArray> jsonDeserializedArray = new Dictionary<string, JSONArray> { };
 
         public static readonly Dictionary<string, AutobahnAPIService> services = new Dictionary<string, AutobahnAPIService> {
             { "Webcams", new AutobahnAPIService()

@@ -20,75 +20,17 @@ namespace AutobahnMonitor
                 public string detailsUri { get; set; }
             }
 
-            public class JSONRoads
+            public class JSONArray
             {
-                public JSONRoads(string json)
+                public JSONArray(string json, string propertyName)
                 {
                     JObject jObject = JObject.Parse(json);
-                    roads = jObject["roads"].ToArray();
+                    jsonArray = jObject[propertyName].ToArray();
                 }
 
-                public Array roads { get; set; }
+                public Array jsonArray { get; set; }
             }
-
-            public class JSONRoadworks
-            {
-                public JSONRoadworks(string json)
-                {
-                    JObject jObject = JObject.Parse(json);
-                    roadworks = jObject["roadworks"].ToArray();
-                }
-
-                public Array roadworks { get; set; }
-
-                //public string title {get; set;}
-                //public string subtitle {get; set;}
-            }
-
-            public class JSONWebcams
-            {
-                public JSONWebcams(string json)
-                {
-                    JObject jObject = JObject.Parse(json);
-                    webcams = jObject["webcam"].ToArray();
-                }
-
-                public Array webcams { get; set; }
-            }
-
-            public class JSONParkingLorries
-            {
-                public JSONParkingLorries(string json)
-                {
-                    JObject jObject = JObject.Parse(json);
-                    parking_lorries = jObject["parking_lorry"].ToArray();
-                }
-
-                public Array parking_lorries { get; set; }
-            }
-
-            public class JSONClosures
-            {
-                public JSONClosures(string json)
-                {
-                    JObject jObject = JObject.Parse(json);
-                    closures = jObject["closure"].ToArray();
-                }
-
-                public Array closures { get; set; }
-            }
-
-            public class JSONElectricChargingStations
-            {
-                public JSONElectricChargingStations(string json)
-                {
-                    JObject jObject = JObject.Parse(json);
-                    electric_charging_stations = jObject["electric_charging_station"].ToArray();
-                }
-
-                public Array electric_charging_stations { get; set; }
-            }
-
+            
             public static string curlRequest(string url)
             {
                 var httpRequest = (HttpWebRequest)WebRequest.Create(url);
@@ -112,41 +54,11 @@ namespace AutobahnMonitor
                 }
             }
 
-            //public static string curlRequestRoadworks(string serviceUri, string roadId)
-            //{
-            //    return curlRequest(serverUri + "/"+serviceUri.Replace("{roadId}", roadId));
-            //}
-
-            public static JSONRoads deserializeJSONRoads(string json)
+            public static JSONArray deserializeJSON(string json, string propertyName)
             {
-                return new JSONRoads(json);
+                return new JSONArray(json, propertyName);
             }
-
-            public static JSONRoadworks deserializeJSONRoadworks(string json)
-            {
-                return new JSONRoadworks(json);
-            }
-
-            public static JSONWebcams deserializeJSONWebcams(string json)
-            {
-                return new JSONWebcams(json);
-            }
-
-            public static JSONParkingLorries deserializeJSONParkingLorries(string json)
-            {
-                return new JSONParkingLorries(json);
-            }
-
-            public static JSONClosures deserializeJSONClosures(string json)
-            {
-                return new JSONClosures(json);
-            }
-
-            public static JSONElectricChargingStations deserializeJSONElectricChargingStations(string json)
-            {
-                return new JSONElectricChargingStations(json);
-            }
-
+            
             public static string queryJSONServiceFromRoad(string road, string service)
             {
                 var serviceUri = services[service].serviceUri;

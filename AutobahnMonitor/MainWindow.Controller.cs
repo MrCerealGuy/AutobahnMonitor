@@ -13,9 +13,9 @@ namespace AutobahnMonitor
             // Init roads
             var jsonRoads = curlRequest(serverUri + "/");
 
-            jsonDeserializedRoads = deserializeJSONRoads(jsonRoads);
+            jsonDeserializedArray["roads"] = deserializeJSON(jsonRoads, "roads");
 
-            foreach (var road in jsonDeserializedRoads.roads)
+            foreach (var road in jsonDeserializedArray["roads"].jsonArray)
                 comboBoxRoad.Items.Add(road.ToString());
 
             comboBoxRoad.SelectedIndex = 0;
@@ -37,61 +37,59 @@ namespace AutobahnMonitor
 
             if (service.Equals("Baustellen"))
             {
-
                 string jsonRoadworks = queryJSONServiceFromRoad(road, service);
 
-                jsonDeserializedRoadworks = deserializeJSONRoadworks(jsonRoadworks);
+                jsonDeserializedArray["roadworks"] = deserializeJSON(jsonRoadworks, "roadworks");
 
-                foreach (var roadwork in jsonDeserializedRoadworks.roadworks)
+                foreach (var roadwork in jsonDeserializedArray["roadworks"].jsonArray)
                     listBoxObjects.Items.Add(JObject.Parse(roadwork.ToString())["title"].ToString() + " - " + JObject.Parse(roadwork.ToString())["subtitle"].ToString());
             }
             else if (service.Equals("Webcams"))
             {
                 string jsonWebcams = queryJSONServiceFromRoad(road, service);
 
-                jsonDeserializedWebcams = deserializeJSONWebcams(jsonWebcams);
+                jsonDeserializedArray["webcam"] = deserializeJSON(jsonWebcams, "webcam");
 
-                foreach (var webcam in jsonDeserializedWebcams.webcams)
+                foreach (var webcam in jsonDeserializedArray["webcam"].jsonArray)
                     listBoxObjects.Items.Add(JObject.Parse(webcam.ToString())["title"].ToString() + " - " + JObject.Parse(webcam.ToString())["subtitle"].ToString());
             }
             else if (service.Equals("Rastplätze"))
             {
                 string jsonParkingLorries = queryJSONServiceFromRoad(road, service);
 
-                jsonDeserializedParkingLorries = deserializeJSONParkingLorries(jsonParkingLorries);
+                jsonDeserializedArray["parking_lorry"] = deserializeJSON(jsonParkingLorries, "parking_lorry");
 
-                foreach (var parking_lorry in jsonDeserializedParkingLorries.parking_lorries)
+                foreach (var parking_lorry in jsonDeserializedArray["parking_lorry"].jsonArray)
                     listBoxObjects.Items.Add(JObject.Parse(parking_lorry.ToString())["title"].ToString() + " - " + JObject.Parse(parking_lorry.ToString())["subtitle"].ToString());
             }
             else if (service.Equals("Sperrungen"))
             {
                 string jsonClosures = queryJSONServiceFromRoad(road, service);
 
-                jsonDeserializedClosures = deserializeJSONClosures(jsonClosures);
+                jsonDeserializedArray["closure"] = deserializeJSON(jsonClosures, "closure");
 
-                foreach (var closure in jsonDeserializedClosures.closures)
+                foreach (var closure in jsonDeserializedArray["closure"].jsonArray)
                     listBoxObjects.Items.Add(JObject.Parse(closure.ToString())["title"].ToString() + " - " + JObject.Parse(closure.ToString())["subtitle"].ToString());
             }
             else if (service.Equals("Ladestationen"))
             {
                 string jsonStations = queryJSONServiceFromRoad(road, service);
 
-                jsonDeserializedElectricChargingStations = deserializeJSONElectricChargingStations(jsonStations);
+                jsonDeserializedArray["electric_charging_station"] = deserializeJSON(jsonStations, "electric_charging_station");
 
-                foreach (var station in jsonDeserializedElectricChargingStations.electric_charging_stations)
+                foreach (var station in jsonDeserializedArray["electric_charging_station"].jsonArray)
                     listBoxObjects.Items.Add(JObject.Parse(station.ToString())["title"].ToString() + " - " + JObject.Parse(station.ToString())["subtitle"].ToString());
             }
 
             if (listBoxObjects.Items.Count > 0)
                 listBoxObjects.SelectedIndex = 0;
-
         }
 
         private void queryDetailsFromRoad(string road, string service)
         {
             if (service.Equals("Baustellen"))
             {
-                var roadwork = jsonDeserializedRoadworks.roadworks.GetValue(listBoxObjects.SelectedIndex);
+                var roadwork = jsonDeserializedArray["roadworks"].jsonArray.GetValue(listBoxObjects.SelectedIndex);
                 var title = JObject.Parse(roadwork.ToString())["title"].ToString();
                 var subtitle = JObject.Parse(roadwork.ToString())["subtitle"].ToString();
                 var description = JObject.Parse(roadwork.ToString())["description"].ToString();
@@ -106,7 +104,7 @@ namespace AutobahnMonitor
             }
             else if (service.Equals("Webcams"))
             {
-                var webcam = jsonDeserializedWebcams.webcams.GetValue(listBoxObjects.SelectedIndex);
+                var webcam = jsonDeserializedArray["webcam"].jsonArray.GetValue(listBoxObjects.SelectedIndex);
                 var title = JObject.Parse(webcam.ToString())["title"].ToString();
                 var operatorwebcam = JObject.Parse(webcam.ToString())["operator"].ToString();
                 var imageurl = JObject.Parse(webcam.ToString())["imageurl"].ToString();
@@ -122,7 +120,7 @@ namespace AutobahnMonitor
             }
             else if (service.Equals("Rastplätze"))
             {
-                var parking_lorry = jsonDeserializedParkingLorries.parking_lorries.GetValue(listBoxObjects.SelectedIndex);
+                var parking_lorry = jsonDeserializedArray["parking_lorry"].jsonArray.GetValue(listBoxObjects.SelectedIndex);
                 var title = JObject.Parse(parking_lorry.ToString())["title"].ToString();
                 var subtitle = JObject.Parse(parking_lorry.ToString())["subtitle"].ToString();
                 var description = JObject.Parse(parking_lorry.ToString())["description"].ToString();
@@ -137,7 +135,7 @@ namespace AutobahnMonitor
             }
             else if (service.Equals("Sperrungen"))
             {
-                var closure = jsonDeserializedClosures.closures.GetValue(listBoxObjects.SelectedIndex);
+                var closure = jsonDeserializedArray["closure"].jsonArray.GetValue(listBoxObjects.SelectedIndex);
                 var title = JObject.Parse(closure.ToString())["title"].ToString();
                 var subtitle = JObject.Parse(closure.ToString())["subtitle"].ToString();
                 var description = JObject.Parse(closure.ToString())["description"].ToString();
@@ -152,7 +150,7 @@ namespace AutobahnMonitor
             }
             else if (service.Equals("Ladestationen"))
             {
-                var station = jsonDeserializedElectricChargingStations.electric_charging_stations.GetValue(listBoxObjects.SelectedIndex);
+                var station = jsonDeserializedArray["electric_charging_station"].jsonArray.GetValue(listBoxObjects.SelectedIndex);
                 var title = JObject.Parse(station.ToString())["title"].ToString();
                 var subtitle = JObject.Parse(station.ToString())["subtitle"].ToString();
                 var description = JObject.Parse(station.ToString())["description"].ToString();

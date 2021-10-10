@@ -21,13 +21,13 @@ namespace AutobahnMonitor
             comboBoxRoad.SelectedIndex = 0;
 
             // Init services
-            foreach (var service in services)
-                comboBoxService.Items.Add(service.Value.deDescription);
+            // foreach (var service in services)
+            //     comboBoxService.Items.Add(service.Value.deDescription);
 
-            comboBoxService.SelectedIndex = 0;
+            // comboBoxService.SelectedIndex = 0;
 
             // Query service from selected road
-            queryServiceFromRoad(comboBoxRoad.SelectedItem.ToString(), comboBoxService.SelectedItem.ToString());
+            queryServiceFromRoad(comboBoxRoad.SelectedItem.ToString(), "Webcams");//comboBoxService.SelectedItem.ToString());
         }
 
         private void queryServiceFromRoad(string road, string service)

@@ -6,10 +6,7 @@ using static AutobahnMonitor.MyGlobals;
 namespace AutobahnMonitor
 {
     public partial class AutobahnMonitor : Form
-    {
-
-        public string activeService = "Webcams";
-
+    { 
         public AutobahnMonitor()
         {
             InitializeComponent();
@@ -25,62 +22,58 @@ namespace AutobahnMonitor
 
         private void comboBoxRoad_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var road = comboBoxRoad.SelectedItem.ToString();
 
+            queryServiceFromRoad(road, activeService);
+            queryDetailsFromRoad(road, activeService);
         }
 
         private void btnQueryWebcams_Click(object sender, EventArgs e)
         {
-            var road = comboBoxRoad.SelectedItem.ToString();
-            activeService = "Webcams";
+            resetAllServiceButtonColor();
+            btnQueryWebcams.BackColor = colorHighlightedServiceButton;
 
-            queryServiceFromRoad(road, activeService);
-            queryDetailsFromRoad(road, activeService);
+            queryServiceButtonHandler("Webcams");
         }
 
         private void btnQueryRoadworks_Click(object sender, EventArgs e)
         {
-            var road = comboBoxRoad.SelectedItem.ToString();
-            activeService = "Baustellen";
+            resetAllServiceButtonColor();
+            btnQueryRoadworks.BackColor = colorHighlightedServiceButton;
 
-            queryServiceFromRoad(road, activeService);
-            queryDetailsFromRoad(road, activeService);
+            queryServiceButtonHandler("Baustellen");
         }
 
         private void btnQueryParkingLorries_Click(object sender, EventArgs e)
         {
-            var road = comboBoxRoad.SelectedItem.ToString();
-            activeService = "Rastplätze";
+            resetAllServiceButtonColor();
+            btnQueryParkingLorries.BackColor = colorHighlightedServiceButton;
 
-            queryServiceFromRoad(road, activeService);
-            queryDetailsFromRoad(road, activeService);
+            queryServiceButtonHandler("Rastplätze");
         }
 
         private void btnQueryClosures_Click(object sender, EventArgs e)
         {
-            var road = comboBoxRoad.SelectedItem.ToString();
-            activeService = "Sperrungen";
+            resetAllServiceButtonColor();
+            btnQueryClosures.BackColor = colorHighlightedServiceButton;
 
-            queryServiceFromRoad(road, activeService);
-            queryDetailsFromRoad(road, activeService);
+            queryServiceButtonHandler("Sperrungen");
         }
 
         private void btnQueryElectricChargingStations_Click(object sender, EventArgs e)
         {
-            var road = comboBoxRoad.SelectedItem.ToString();
-            activeService = "Ladestationen";
+            resetAllServiceButtonColor();
+            btnQueryElectricChargingStations.BackColor = colorHighlightedServiceButton;
 
-            queryServiceFromRoad(road, activeService);
-            queryDetailsFromRoad(road, activeService);
-
+            queryServiceButtonHandler("Ladestationen");
         }
 
         private void btnQueryWarnings_Click(object sender, EventArgs e)
         {
-            var road = comboBoxRoad.SelectedItem.ToString();
-            activeService = "Warnungen";
+            resetAllServiceButtonColor();
+            btnQueryWarnings.BackColor = colorHighlightedServiceButton;
 
-            queryServiceFromRoad(road, activeService);
-            queryDetailsFromRoad(road, activeService);
+            queryServiceButtonHandler("Warnungen");
         }
     }
 }

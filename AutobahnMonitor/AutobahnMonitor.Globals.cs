@@ -51,5 +51,7 @@ namespace AutobahnMonitor
                 }
             }
         };
+
+        public static System.Drawing.Color colorHighlightedServiceButton = System.Drawing.SystemColors.ButtonShadow;
     }
 }

@@ -8,6 +8,8 @@ namespace AutobahnMonitor
 {
     public partial class AutobahnMonitor : Form
     {
+        public string activeService = "Webcams";
+
         private void InitAutobahnUI()
         {
             // Init roads
@@ -20,14 +22,28 @@ namespace AutobahnMonitor
 
             comboBoxRoad.SelectedIndex = 0;
 
-            // Init services
-            // foreach (var service in services)
-            //     comboBoxService.Items.Add(service.Value.deDescription);
-
-            // comboBoxService.SelectedIndex = 0;
-
             // Query service from selected road
-            queryServiceFromRoad(comboBoxRoad.SelectedItem.ToString(), "Webcams");//comboBoxService.SelectedItem.ToString());
+            btnQueryWebcams.BackColor = colorHighlightedServiceButton;
+            queryServiceFromRoad(comboBoxRoad.SelectedItem.ToString(), activeService);
+        }
+
+        private void resetAllServiceButtonColor()
+        {
+            btnQueryWebcams.BackColor = System.Drawing.SystemColors.Control;
+            btnQueryRoadworks.BackColor = System.Drawing.SystemColors.Control;
+            btnQueryParkingLorries.BackColor = System.Drawing.SystemColors.Control;
+            btnQueryClosures.BackColor = System.Drawing.SystemColors.Control;
+            btnQueryElectricChargingStations.BackColor = System.Drawing.SystemColors.Control;
+            btnQueryWarnings.BackColor = System.Drawing.SystemColors.Control;
+        }
+
+        private void queryServiceButtonHandler(string service)
+        {
+            var road = comboBoxRoad.SelectedItem.ToString();
+            activeService = service;
+
+            queryServiceFromRoad(road, activeService);
+            queryDetailsFromRoad(road, activeService);
         }
 
         private void queryServiceFromRoad(string road, string service)
@@ -87,6 +103,12 @@ namespace AutobahnMonitor
 
         private void queryDetailsFromRoad(string road, string service)
         {
+            if (listBoxObjects.Items.Count == 0)
+            {
+                listBoxObjects.Items.Add("Keine " + service + " gefunden!");
+                return;
+            }
+
             if (service.Equals("Baustellen"))
             {
                 var roadwork = jsonDeserializedArray["roadworks"].jsonArray.GetValue(listBoxObjects.SelectedIndex);

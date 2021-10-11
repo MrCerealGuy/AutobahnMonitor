@@ -64,6 +64,17 @@ namespace AutobahnMonitor
                     detailsParams = new string[] { "title", "subtitle", "description", "coordinate", "lat", "long" },
                     detailsFormat = "Titel: {title}\nUntertitel:{subtitle}\n\nBeschreibung:{description}\n\nKoordinaten:{lat} (Lat.), {long} (Long.)"
                 }
+            },
+            {"Warnungen", new AutobahnAPIService()
+                {
+                    deDescription = "Warnungen",
+                    enDescription = "warning",
+                    serviceUri = "/{roadId}/services/warning",
+                    detailsUri = "/details/warning/{warningId}",
+
+                    detailsParams = new string[] { "title", "subtitle", "description", "coordinate", "lat", "long" },
+                    detailsFormat = "Titel: {title}\nUntertitel:{subtitle}\n\nBeschreibung:{description}\n\nKoordinaten:{lat} (Lat.), {long} (Long.)"
+                }
             }
         };
 

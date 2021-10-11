@@ -26,6 +26,8 @@ namespace AutobahnMonitor
 
             queryServiceFromRoad(road, activeService);
             queryDetailsFromRoad(road, activeService);
+
+            updateLabelRoadService();
         }
 
         private void btnQueryWebcams_Click(object sender, EventArgs e)

@@ -18,6 +18,8 @@ namespace AutobahnMonitor
                 public string enDescription { get; set; }
                 public string serviceUri { get; set; }
                 public string detailsUri { get; set; }
+                public string[] detailsParams { get; set; }
+                public string detailsFormat { get; set; }
             }
 
             public class JSONArray

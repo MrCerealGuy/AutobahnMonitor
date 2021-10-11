@@ -36,19 +36,19 @@ namespace AutobahnMonitor
             this.listBoxObjects = new System.Windows.Forms.ListBox();
             this.richTextBoxObjectDetails = new System.Windows.Forms.RichTextBox();
             this.webBrowserWebcam = new System.Windows.Forms.WebBrowser();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelRoadService = new System.Windows.Forms.Label();
+            this.labelServiceDetails = new System.Windows.Forms.Label();
+            this.labelWebcam = new System.Windows.Forms.Label();
             this.webBrowserGIS = new System.Windows.Forms.WebBrowser();
             this.tableLayoutPanelMainWindow = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPaneServiceButtons = new System.Windows.Forms.TableLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.labelWarnings = new System.Windows.Forms.Label();
+            this.labelElectricChargingStations = new System.Windows.Forms.Label();
+            this.labelClosures = new System.Windows.Forms.Label();
+            this.labelParkingLorries = new System.Windows.Forms.Label();
+            this.labelRoadworks = new System.Windows.Forms.Label();
             this.btnQueryWebcams = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
+            this.labelWebcams = new System.Windows.Forms.Label();
             this.btnQueryRoadworks = new System.Windows.Forms.Button();
             this.btnQueryParkingLorries = new System.Windows.Forms.Button();
             this.btnQueryClosures = new System.Windows.Forms.Button();
@@ -97,7 +97,7 @@ namespace AutobahnMonitor
             this.listBoxObjects.Location = new System.Drawing.Point(3, 28);
             this.listBoxObjects.Name = "listBoxObjects";
             this.listBoxObjects.Size = new System.Drawing.Size(327, 310);
-            this.listBoxObjects.TabIndex = 5;
+            this.listBoxObjects.TabIndex = 7;
             this.listBoxObjects.SelectedIndexChanged += new System.EventHandler(this.listBoxObjects_SelectedIndexChanged);
             // 
             // richTextBoxObjectDetails
@@ -106,7 +106,7 @@ namespace AutobahnMonitor
             this.richTextBoxObjectDetails.Location = new System.Drawing.Point(336, 28);
             this.richTextBoxObjectDetails.Name = "richTextBoxObjectDetails";
             this.richTextBoxObjectDetails.Size = new System.Drawing.Size(328, 310);
-            this.richTextBoxObjectDetails.TabIndex = 6;
+            this.richTextBoxObjectDetails.TabIndex = 8;
             this.richTextBoxObjectDetails.Text = "";
             // 
             // webBrowserWebcam
@@ -118,41 +118,41 @@ namespace AutobahnMonitor
             this.webBrowserWebcam.Size = new System.Drawing.Size(329, 310);
             this.webBrowserWebcam.TabIndex = 9;
             // 
-            // label1
+            // labelRoadService
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelRoadService.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 25);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Autobahn";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelRoadService.AutoSize = true;
+            this.labelRoadService.Location = new System.Drawing.Point(3, 0);
+            this.labelRoadService.Name = "labelRoadService";
+            this.labelRoadService.Size = new System.Drawing.Size(53, 25);
+            this.labelRoadService.TabIndex = 11;
+            this.labelRoadService.Text = "Autobahn";
+            this.labelRoadService.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // labelServiceDetails
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelServiceDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(336, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 25);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Details";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelServiceDetails.AutoSize = true;
+            this.labelServiceDetails.Location = new System.Drawing.Point(336, 0);
+            this.labelServiceDetails.Name = "labelServiceDetails";
+            this.labelServiceDetails.Size = new System.Drawing.Size(39, 25);
+            this.labelServiceDetails.TabIndex = 12;
+            this.labelServiceDetails.Text = "Details";
+            this.labelServiceDetails.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // labelWebcam
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelWebcam.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(670, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 25);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Webcam";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelWebcam.AutoSize = true;
+            this.labelWebcam.Location = new System.Drawing.Point(670, 0);
+            this.labelWebcam.Name = "labelWebcam";
+            this.labelWebcam.Size = new System.Drawing.Size(50, 25);
+            this.labelWebcam.TabIndex = 13;
+            this.labelWebcam.Text = "Webcam";
+            this.labelWebcam.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // webBrowserGIS
             // 
@@ -198,13 +198,13 @@ namespace AutobahnMonitor
             this.tableLayoutPaneServiceButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333332F));
             this.tableLayoutPaneServiceButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333332F));
             this.tableLayoutPaneServiceButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333332F));
-            this.tableLayoutPaneServiceButtons.Controls.Add(this.label6, 10, 0);
-            this.tableLayoutPaneServiceButtons.Controls.Add(this.label5, 8, 0);
-            this.tableLayoutPaneServiceButtons.Controls.Add(this.label4, 6, 0);
-            this.tableLayoutPaneServiceButtons.Controls.Add(this.label7, 4, 0);
-            this.tableLayoutPaneServiceButtons.Controls.Add(this.label8, 2, 0);
+            this.tableLayoutPaneServiceButtons.Controls.Add(this.labelWarnings, 10, 0);
+            this.tableLayoutPaneServiceButtons.Controls.Add(this.labelElectricChargingStations, 8, 0);
+            this.tableLayoutPaneServiceButtons.Controls.Add(this.labelClosures, 6, 0);
+            this.tableLayoutPaneServiceButtons.Controls.Add(this.labelParkingLorries, 4, 0);
+            this.tableLayoutPaneServiceButtons.Controls.Add(this.labelRoadworks, 2, 0);
             this.tableLayoutPaneServiceButtons.Controls.Add(this.btnQueryWebcams, 1, 0);
-            this.tableLayoutPaneServiceButtons.Controls.Add(this.label9, 0, 0);
+            this.tableLayoutPaneServiceButtons.Controls.Add(this.labelWebcams, 0, 0);
             this.tableLayoutPaneServiceButtons.Controls.Add(this.btnQueryRoadworks, 3, 0);
             this.tableLayoutPaneServiceButtons.Controls.Add(this.btnQueryParkingLorries, 5, 0);
             this.tableLayoutPaneServiceButtons.Controls.Add(this.btnQueryClosures, 7, 0);
@@ -218,70 +218,70 @@ namespace AutobahnMonitor
             this.tableLayoutPaneServiceButtons.Size = new System.Drawing.Size(1002, 94);
             this.tableLayoutPaneServiceButtons.TabIndex = 11;
             // 
-            // label6
+            // labelWarnings
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelWarnings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(833, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 94);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "Warnungen";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelWarnings.AutoSize = true;
+            this.labelWarnings.Location = new System.Drawing.Point(833, 0);
+            this.labelWarnings.Name = "labelWarnings";
+            this.labelWarnings.Size = new System.Drawing.Size(77, 94);
+            this.labelWarnings.TabIndex = 21;
+            this.labelWarnings.Text = "Warnungen";
+            this.labelWarnings.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label5
+            // labelElectricChargingStations
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelElectricChargingStations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(667, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 94);
-            this.label5.TabIndex = 20;
-            this.label5.Text = "Ladestationen";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelElectricChargingStations.AutoSize = true;
+            this.labelElectricChargingStations.Location = new System.Drawing.Point(667, 0);
+            this.labelElectricChargingStations.Name = "labelElectricChargingStations";
+            this.labelElectricChargingStations.Size = new System.Drawing.Size(77, 94);
+            this.labelElectricChargingStations.TabIndex = 20;
+            this.labelElectricChargingStations.Text = "Ladestationen";
+            this.labelElectricChargingStations.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label4
+            // labelClosures
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelClosures.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(501, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 94);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "Sperrungen";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelClosures.AutoSize = true;
+            this.labelClosures.Location = new System.Drawing.Point(501, 0);
+            this.labelClosures.Name = "labelClosures";
+            this.labelClosures.Size = new System.Drawing.Size(77, 94);
+            this.labelClosures.TabIndex = 19;
+            this.labelClosures.Text = "Sperrungen";
+            this.labelClosures.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label7
+            // labelParkingLorries
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelParkingLorries.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(335, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 94);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "Rastplätze";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelParkingLorries.AutoSize = true;
+            this.labelParkingLorries.Location = new System.Drawing.Point(335, 0);
+            this.labelParkingLorries.Name = "labelParkingLorries";
+            this.labelParkingLorries.Size = new System.Drawing.Size(77, 94);
+            this.labelParkingLorries.TabIndex = 18;
+            this.labelParkingLorries.Text = "Rastplätze";
+            this.labelParkingLorries.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label8
+            // labelRoadworks
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelRoadworks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(169, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(77, 94);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "Baustellen";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelRoadworks.AutoSize = true;
+            this.labelRoadworks.Location = new System.Drawing.Point(169, 0);
+            this.labelRoadworks.Name = "labelRoadworks";
+            this.labelRoadworks.Size = new System.Drawing.Size(77, 94);
+            this.labelRoadworks.TabIndex = 17;
+            this.labelRoadworks.Text = "Baustellen";
+            this.labelRoadworks.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnQueryWebcams
             // 
@@ -294,22 +294,22 @@ namespace AutobahnMonitor
             this.btnQueryWebcams.Location = new System.Drawing.Point(86, 3);
             this.btnQueryWebcams.Name = "btnQueryWebcams";
             this.btnQueryWebcams.Size = new System.Drawing.Size(77, 88);
-            this.btnQueryWebcams.TabIndex = 10;
+            this.btnQueryWebcams.TabIndex = 1;
             this.btnQueryWebcams.UseVisualStyleBackColor = false;
             this.btnQueryWebcams.Click += new System.EventHandler(this.btnQueryWebcams_Click);
             // 
-            // label9
+            // labelWebcams
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelWebcams.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 94);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "Webcams";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelWebcams.AutoSize = true;
+            this.labelWebcams.Location = new System.Drawing.Point(3, 0);
+            this.labelWebcams.Name = "labelWebcams";
+            this.labelWebcams.Size = new System.Drawing.Size(77, 94);
+            this.labelWebcams.TabIndex = 16;
+            this.labelWebcams.Text = "Webcams";
+            this.labelWebcams.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnQueryRoadworks
             // 
@@ -321,7 +321,7 @@ namespace AutobahnMonitor
             this.btnQueryRoadworks.Location = new System.Drawing.Point(252, 3);
             this.btnQueryRoadworks.Name = "btnQueryRoadworks";
             this.btnQueryRoadworks.Size = new System.Drawing.Size(77, 88);
-            this.btnQueryRoadworks.TabIndex = 11;
+            this.btnQueryRoadworks.TabIndex = 2;
             this.btnQueryRoadworks.UseVisualStyleBackColor = true;
             this.btnQueryRoadworks.Click += new System.EventHandler(this.btnQueryRoadworks_Click);
             // 
@@ -334,7 +334,7 @@ namespace AutobahnMonitor
             this.btnQueryParkingLorries.Location = new System.Drawing.Point(418, 3);
             this.btnQueryParkingLorries.Name = "btnQueryParkingLorries";
             this.btnQueryParkingLorries.Size = new System.Drawing.Size(77, 88);
-            this.btnQueryParkingLorries.TabIndex = 12;
+            this.btnQueryParkingLorries.TabIndex = 3;
             this.btnQueryParkingLorries.UseVisualStyleBackColor = true;
             this.btnQueryParkingLorries.Click += new System.EventHandler(this.btnQueryParkingLorries_Click);
             // 
@@ -348,7 +348,7 @@ namespace AutobahnMonitor
             this.btnQueryClosures.Location = new System.Drawing.Point(584, 3);
             this.btnQueryClosures.Name = "btnQueryClosures";
             this.btnQueryClosures.Size = new System.Drawing.Size(77, 88);
-            this.btnQueryClosures.TabIndex = 13;
+            this.btnQueryClosures.TabIndex = 4;
             this.btnQueryClosures.UseVisualStyleBackColor = true;
             this.btnQueryClosures.Click += new System.EventHandler(this.btnQueryClosures_Click);
             // 
@@ -362,7 +362,7 @@ namespace AutobahnMonitor
             this.btnQueryElectricChargingStations.Location = new System.Drawing.Point(750, 3);
             this.btnQueryElectricChargingStations.Name = "btnQueryElectricChargingStations";
             this.btnQueryElectricChargingStations.Size = new System.Drawing.Size(77, 88);
-            this.btnQueryElectricChargingStations.TabIndex = 14;
+            this.btnQueryElectricChargingStations.TabIndex = 5;
             this.btnQueryElectricChargingStations.UseVisualStyleBackColor = true;
             this.btnQueryElectricChargingStations.Click += new System.EventHandler(this.btnQueryElectricChargingStations_Click);
             // 
@@ -376,7 +376,7 @@ namespace AutobahnMonitor
             this.btnQueryWarnings.Location = new System.Drawing.Point(916, 3);
             this.btnQueryWarnings.Name = "btnQueryWarnings";
             this.btnQueryWarnings.Size = new System.Drawing.Size(83, 88);
-            this.btnQueryWarnings.TabIndex = 15;
+            this.btnQueryWarnings.TabIndex = 6;
             this.btnQueryWarnings.UseVisualStyleBackColor = true;
             this.btnQueryWarnings.Click += new System.EventHandler(this.btnQueryWarnings_Click);
             // 
@@ -417,7 +417,7 @@ namespace AutobahnMonitor
             this.comboBoxRoad.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.comboBoxRoad.Name = "comboBoxRoad";
             this.comboBoxRoad.Size = new System.Drawing.Size(163, 21);
-            this.comboBoxRoad.TabIndex = 8;
+            this.comboBoxRoad.TabIndex = 0;
             this.comboBoxRoad.SelectedIndexChanged += new System.EventHandler(this.comboBoxRoad_SelectedIndexChanged);
             // 
             // tableLayoutPanelDetails
@@ -426,10 +426,10 @@ namespace AutobahnMonitor
             this.tableLayoutPanelDetails.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelDetails.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanelDetails.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanelDetails.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanelDetails.Controls.Add(this.label3, 2, 0);
+            this.tableLayoutPanelDetails.Controls.Add(this.labelRoadService, 0, 0);
+            this.tableLayoutPanelDetails.Controls.Add(this.labelWebcam, 2, 0);
             this.tableLayoutPanelDetails.Controls.Add(this.webBrowserWebcam, 2, 1);
-            this.tableLayoutPanelDetails.Controls.Add(this.label2, 1, 0);
+            this.tableLayoutPanelDetails.Controls.Add(this.labelServiceDetails, 1, 0);
             this.tableLayoutPanelDetails.Controls.Add(this.richTextBoxObjectDetails, 1, 1);
             this.tableLayoutPanelDetails.Controls.Add(this.listBoxObjects, 0, 1);
             this.tableLayoutPanelDetails.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -476,9 +476,9 @@ namespace AutobahnMonitor
         private System.Windows.Forms.ListBox listBoxObjects;
         private System.Windows.Forms.RichTextBox richTextBoxObjectDetails;
         private System.Windows.Forms.WebBrowser webBrowserWebcam;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelRoadService;
+        private System.Windows.Forms.Label labelServiceDetails;
+        private System.Windows.Forms.Label labelWebcam;
         private System.Windows.Forms.WebBrowser webBrowserGIS;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMainWindow;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelRoad;
@@ -486,13 +486,13 @@ namespace AutobahnMonitor
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelDetails;
         private System.Windows.Forms.ComboBox comboBoxRoad;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPaneServiceButtons;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label labelWarnings;
+        private System.Windows.Forms.Label labelElectricChargingStations;
+        private System.Windows.Forms.Label labelClosures;
+        private System.Windows.Forms.Label labelParkingLorries;
+        private System.Windows.Forms.Label labelRoadworks;
         private System.Windows.Forms.Button btnQueryWebcams;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label labelWebcams;
         private System.Windows.Forms.Button btnQueryRoadworks;
         private System.Windows.Forms.Button btnQueryParkingLorries;
         private System.Windows.Forms.Button btnQueryClosures;

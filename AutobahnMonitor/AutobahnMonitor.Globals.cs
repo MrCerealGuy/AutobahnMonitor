@@ -15,7 +15,10 @@ namespace AutobahnMonitor
                     deDescription = "Webcams",
                     enDescription = "webcam",
                     serviceUri = "/{roadId}/services/webcam",
-                    detailsUri = "/details/webcam/{webcamId}"
+                    detailsUri = "/details/webcam/{webcamId}",
+
+                    detailsParams = new string[] { "title", "operator", "imageurl", "linkurl", "coordinate", "lat", "long" },
+                    detailsFormat = "Titel: {title}\nBetreiber: {operator}\n\nBild-URL: {imageurl}\n\nVideo-URL: {linkurl}\n\nKoordinaten:{lat} (Lat.), {long} (Long.)"
                 }
             },
             { "Baustellen", new AutobahnAPIService()
@@ -23,7 +26,10 @@ namespace AutobahnMonitor
                     deDescription = "Baustellen",
                     enDescription = "roadworks",
                     serviceUri = "/{roadId}/services/roadworks",
-                    detailsUri = "/details/roadworks/{roadworkId}"
+                    detailsUri = "/details/roadworks/{roadworkId}",
+
+                    detailsParams = new string[] { "title", "subtitle", "description", "coordinate", "lat", "long" },
+                    detailsFormat = "Titel: {title}\nUntertitel:{subtitle}\n\nBeschreibung:{description}\n\nKoordinaten:{lat} (Lat.), {long} (Long.)"
                 }
             },
             {"Rastplätze", new AutobahnAPIService()
@@ -31,7 +37,10 @@ namespace AutobahnMonitor
                     deDescription = "Rastplätze",
                     enDescription = "parking_lorry",
                     serviceUri = "/{roadId}/services/parking_lorry",
-                    detailsUri = "/details/parking_lorry/{lorryId}"
+                    detailsUri = "/details/parking_lorry/{lorryId}",
+
+                    detailsParams = new string[] { "title", "subtitle", "description", "coordinate", "lat", "long" },
+                    detailsFormat = "Titel: {title}\nUntertitel:{subtitle}\n\nBeschreibung:{description}\n\nKoordinaten:{lat} (Lat.), {long} (Long.)"
                 }
             },
             {"Sperrungen", new AutobahnAPIService()
@@ -39,7 +48,10 @@ namespace AutobahnMonitor
                     deDescription = "Sperrungen",
                     enDescription = "closure",
                     serviceUri = "/{roadId}/services/closure",
-                    detailsUri = "/details/closure/{closureId}"
+                    detailsUri = "/details/closure/{closureId}",
+
+                    detailsParams = new string[] { "title", "subtitle", "description", "coordinate", "lat", "long" },
+                    detailsFormat = "Titel: {title}\nUntertitel:{subtitle}\n\nBeschreibung:{description}\n\nKoordinaten:{lat} (Lat.), {long} (Long.)"
                 }
             },
             {"Ladestationen", new AutobahnAPIService()
@@ -47,7 +59,10 @@ namespace AutobahnMonitor
                     deDescription = "Ladestationen",
                     enDescription = "electric_charging_station",
                     serviceUri = "/{roadId}/services/electric_charging_station",
-                    detailsUri = "/details/electric_charging_station/{stationId}"
+                    detailsUri = "/details/electric_charging_station/{stationId}",
+
+                    detailsParams = new string[] { "title", "subtitle", "description", "coordinate", "lat", "long" },
+                    detailsFormat = "Titel: {title}\nUntertitel:{subtitle}\n\nBeschreibung:{description}\n\nKoordinaten:{lat} (Lat.), {long} (Long.)"
                 }
             }
         };

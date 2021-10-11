@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
 
 using static AutobahnMonitor.MyGlobals;
@@ -25,6 +27,13 @@ namespace AutobahnMonitor
             // Query service from selected road
             btnQueryWebcams.BackColor = colorHighlightedServiceButton;
             queryServiceFromRoad(comboBoxRoad.SelectedItem.ToString(), activeService);
+
+            updateLabelRoadService();
+        }
+
+        private void updateLabelRoadService()
+        {
+            labelRoadService.Text = "Autobahn " + comboBoxRoad.SelectedItem.ToString() + ": " + activeService;
         }
 
         private void resetAllServiceButtonColor()
@@ -44,6 +53,8 @@ namespace AutobahnMonitor
 
             queryServiceFromRoad(road, activeService);
             queryDetailsFromRoad(road, activeService);
+
+            updateLabelRoadService();
         }
 
         private void queryServiceFromRoad(string road, string service)
@@ -51,52 +62,13 @@ namespace AutobahnMonitor
             listBoxObjects.Items.Clear();
             richTextBoxObjectDetails.Clear();
 
-            if (service.Equals("Baustellen"))
-            {
-                string jsonRoadworks = queryJSONServiceFromRoad(road, service);
+            string _json = queryJSONServiceFromRoad(road, service);
 
-                jsonDeserializedArray["roadworks"] = deserializeJSON(jsonRoadworks, "roadworks");
+            jsonDeserializedArray[services[service].enDescription] = deserializeJSON(_json, services[service].enDescription);
 
-                foreach (var roadwork in jsonDeserializedArray["roadworks"].jsonArray)
-                    listBoxObjects.Items.Add(JObject.Parse(roadwork.ToString())["title"].ToString() + " - " + JObject.Parse(roadwork.ToString())["subtitle"].ToString());
-            }
-            else if (service.Equals("Webcams"))
-            {
-                string jsonWebcams = queryJSONServiceFromRoad(road, service);
-
-                jsonDeserializedArray["webcam"] = deserializeJSON(jsonWebcams, "webcam");
-
-                foreach (var webcam in jsonDeserializedArray["webcam"].jsonArray)
-                    listBoxObjects.Items.Add(JObject.Parse(webcam.ToString())["title"].ToString() + " - " + JObject.Parse(webcam.ToString())["subtitle"].ToString());
-            }
-            else if (service.Equals("Rastplätze"))
-            {
-                string jsonParkingLorries = queryJSONServiceFromRoad(road, service);
-
-                jsonDeserializedArray["parking_lorry"] = deserializeJSON(jsonParkingLorries, "parking_lorry");
-
-                foreach (var parking_lorry in jsonDeserializedArray["parking_lorry"].jsonArray)
-                    listBoxObjects.Items.Add(JObject.Parse(parking_lorry.ToString())["title"].ToString() + " - " + JObject.Parse(parking_lorry.ToString())["subtitle"].ToString());
-            }
-            else if (service.Equals("Sperrungen"))
-            {
-                string jsonClosures = queryJSONServiceFromRoad(road, service);
-
-                jsonDeserializedArray["closure"] = deserializeJSON(jsonClosures, "closure");
-
-                foreach (var closure in jsonDeserializedArray["closure"].jsonArray)
-                    listBoxObjects.Items.Add(JObject.Parse(closure.ToString())["title"].ToString() + " - " + JObject.Parse(closure.ToString())["subtitle"].ToString());
-            }
-            else if (service.Equals("Ladestationen"))
-            {
-                string jsonStations = queryJSONServiceFromRoad(road, service);
-
-                jsonDeserializedArray["electric_charging_station"] = deserializeJSON(jsonStations, "electric_charging_station");
-
-                foreach (var station in jsonDeserializedArray["electric_charging_station"].jsonArray)
-                    listBoxObjects.Items.Add(JObject.Parse(station.ToString())["title"].ToString() + " - " + JObject.Parse(station.ToString())["subtitle"].ToString());
-            }
-
+            foreach (var roadObject in jsonDeserializedArray[services[service].enDescription].jsonArray)
+                listBoxObjects.Items.Add(JObject.Parse(roadObject.ToString())["title"].ToString() + " - " + JObject.Parse(roadObject.ToString())["subtitle"].ToString());
+          
             if (listBoxObjects.Items.Count > 0)
                 listBoxObjects.SelectedIndex = 0;
         }
@@ -109,91 +81,41 @@ namespace AutobahnMonitor
                 return;
             }
 
-            if (service.Equals("Baustellen"))
-            {
-                var roadwork = jsonDeserializedArray["roadworks"].jsonArray.GetValue(listBoxObjects.SelectedIndex);
-                var title = JObject.Parse(roadwork.ToString())["title"].ToString();
-                var subtitle = JObject.Parse(roadwork.ToString())["subtitle"].ToString();
-                var description = JObject.Parse(roadwork.ToString())["description"].ToString();
-                var coordinate = JObject.Parse(roadwork.ToString())["coordinate"].ToString();
-                var lat = JObject.Parse(coordinate)["lat"].ToString();
-                var longitude = JObject.Parse(coordinate)["long"].ToString();
+            var _jsonObject = jsonDeserializedArray[services[service].enDescription].jsonArray.GetValue(listBoxObjects.SelectedIndex);
+            Dictionary<string, string> _params = new Dictionary<string, string> { };
 
-                richTextBoxObjectDetails.Text = $"Titel: {title}\nUntertitel:{subtitle}\n\nBeschreibung:{description}\n\nKoordinaten:{lat} (Lat.), {longitude} (Long.)";
+            foreach (string _p in services[service].detailsParams)
+                if (_p == "lat" || _p == "long")
+                    _params[_p] = JObject.Parse(_params["coordinate"])[_p].ToString();
+                else
+                    _params[_p] = JObject.Parse(_jsonObject.ToString())[_p].ToString();
 
-                // Update GIS
-                updateWebcamAndGIS("", "", lat, longitude);
-            }
-            else if (service.Equals("Webcams"))
-            {
-                var webcam = jsonDeserializedArray["webcam"].jsonArray.GetValue(listBoxObjects.SelectedIndex);
-                var title = JObject.Parse(webcam.ToString())["title"].ToString();
-                var operatorwebcam = JObject.Parse(webcam.ToString())["operator"].ToString();
-                var imageurl = JObject.Parse(webcam.ToString())["imageurl"].ToString();
-                var linkurl = JObject.Parse(webcam.ToString())["linkurl"].ToString();
-                var coordinate = JObject.Parse(webcam.ToString())["coordinate"].ToString();
-                var lat = JObject.Parse(coordinate)["lat"].ToString();
-                var longitude = JObject.Parse(coordinate)["long"].ToString();
+            var _s = services[service].detailsFormat;
 
-                richTextBoxObjectDetails.Text = $"Titel: {title}\nBetreiber: {operatorwebcam}\n\nBild-URL: {imageurl}\n\nVideo-URL: {linkurl}\n\nKoordinaten:{lat} (Lat.), {longitude} (Long.)";
+            foreach (string _p in services[service].detailsParams)
+                _s = _s.Replace("{" + _p + "}", _params[_p]);
 
-                // Update Webcam and GIS
-                updateWebcamAndGIS(linkurl, imageurl, lat, longitude);
-            }
-            else if (service.Equals("Rastplätze"))
-            {
-                var parking_lorry = jsonDeserializedArray["parking_lorry"].jsonArray.GetValue(listBoxObjects.SelectedIndex);
-                var title = JObject.Parse(parking_lorry.ToString())["title"].ToString();
-                var subtitle = JObject.Parse(parking_lorry.ToString())["subtitle"].ToString();
-                var description = JObject.Parse(parking_lorry.ToString())["description"].ToString();
-                var coordinate = JObject.Parse(parking_lorry.ToString())["coordinate"].ToString();
-                var lat = JObject.Parse(coordinate)["lat"].ToString();
-                var longitude = JObject.Parse(coordinate)["long"].ToString();
+            richTextBoxObjectDetails.Text = _s;
 
-                richTextBoxObjectDetails.Text = $"Titel: {title}\nUntertitel:{subtitle}\n\nBeschreibung:{description}\n\nKoordinaten:{lat} (Lat.), {longitude} (Long.)";
-
-                // Update GIS
-                updateWebcamAndGIS("", "", lat, longitude);
-            }
-            else if (service.Equals("Sperrungen"))
-            {
-                var closure = jsonDeserializedArray["closure"].jsonArray.GetValue(listBoxObjects.SelectedIndex);
-                var title = JObject.Parse(closure.ToString())["title"].ToString();
-                var subtitle = JObject.Parse(closure.ToString())["subtitle"].ToString();
-                var description = JObject.Parse(closure.ToString())["description"].ToString();
-                var coordinate = JObject.Parse(closure.ToString())["coordinate"].ToString();
-                var lat = JObject.Parse(coordinate)["lat"].ToString();
-                var longitude = JObject.Parse(coordinate)["long"].ToString();
-
-                richTextBoxObjectDetails.Text = $"Titel: {title}\nUntertitel:{subtitle}\n\nBeschreibung:{description}\n\nKoordinaten:{lat} (Lat.), {longitude} (Long.)";
-
-                // Update GIS
-                updateWebcamAndGIS("", "", lat, longitude);
-            }
-            else if (service.Equals("Ladestationen"))
-            {
-                var station = jsonDeserializedArray["electric_charging_station"].jsonArray.GetValue(listBoxObjects.SelectedIndex);
-                var title = JObject.Parse(station.ToString())["title"].ToString();
-                var subtitle = JObject.Parse(station.ToString())["subtitle"].ToString();
-                var description = JObject.Parse(station.ToString())["description"].ToString();
-                var coordinate = JObject.Parse(station.ToString())["coordinate"].ToString();
-                var lat = JObject.Parse(coordinate)["lat"].ToString();
-                var longitude = JObject.Parse(coordinate)["long"].ToString();
-
-                richTextBoxObjectDetails.Text = $"Titel: {title}\nUntertitel:{subtitle}\n\nBeschreibung:{description}\n\nKoordinaten:{lat} (Lat.), {longitude} (Long.)";
-
-                // Update GIS
-                updateWebcamAndGIS("", "", lat, longitude);
-            }
+            // Update Webcam and GIS
+            if (service == "Webcams")
+                updateWebcamAndGIS(_params["title"], _params["linkurl"], _params["imageurl"], _params["lat"], _params["long"]);
+            else
+                updateWebcamAndGIS(_params["title"], "", "", _params["lat"], _params["long"]);
         }
 
-        private void updateWebcamAndGIS(string webcamVideoUri, string webcamImageUri, string lat, string longitude)
+        private void updateWebcamAndGIS(string title, string webcamVideoUri, string webcamImageUri, string lat, string longitude)
         {
             // Update Browser Webcam
             if (webcamVideoUri != "")
                 webBrowserWebcam.Url = new System.Uri(webcamVideoUri);
             else if (webcamImageUri != "")
                 webBrowserWebcam.Url = new System.Uri(webcamImageUri);
+
+            if (title != "" && activeService == "Webcams")
+                labelWebcam.Text = "Webcam: " + title;
+            else
+                labelWebcam.Text = "Webcam";
 
             // Update Browser GIS
             if (lat != "" && longitude != "")

@@ -6,4 +6,4 @@ Kleine App zur Abfrage von öffentlichen Vekehrsinformationen deutscher Autobahn
 
 Copyright (c) 2021 Andreas "MrCerealGuy" Zahnleiter <mrcerealguy@gmx.de>
 
-<img src="screenshot.png" height="99px" alt="AutobahnMonitor">
+<img src="screenshot.png" alt="AutobahnMonitor">

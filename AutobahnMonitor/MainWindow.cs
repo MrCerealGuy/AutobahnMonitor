@@ -77,5 +77,11 @@ namespace AutobahnMonitor
 
             queryServiceButtonHandler("Warnungen");
         }
+
+        private void infoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InfoDialog dlg = new InfoDialog();
+            dlg.ShowDialog(this);
+        }
     }
 }

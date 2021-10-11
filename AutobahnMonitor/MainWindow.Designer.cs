@@ -70,6 +70,7 @@ namespace AutobahnMonitor
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.infoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.MinimumSize = new System.Drawing.Size(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1008, 24);
             this.menuStrip1.TabIndex = 0;
@@ -80,6 +81,7 @@ namespace AutobahnMonitor
             this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
             this.infoToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.infoToolStripMenuItem.Text = "Info";
+            this.infoToolStripMenuItem.Click += new System.EventHandler(this.infoToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -327,8 +329,9 @@ namespace AutobahnMonitor
             // 
             // btnQueryParkingLorries
             // 
-            this.btnQueryParkingLorries.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnQueryParkingLorries.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnQueryParkingLorries.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnQueryParkingLorries.BackgroundImage")));
             this.btnQueryParkingLorries.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnQueryParkingLorries.Location = new System.Drawing.Point(418, 3);
@@ -451,6 +454,7 @@ namespace AutobahnMonitor
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "AutobahnMonitor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AutobahnMonitor v1.0 - Andreas Zahnleiter - Free to use";

@@ -4,10 +4,10 @@
 
 Kleine App zur Abfrage von öffentlichen Vekehrsinformationen deutscher Autobahnen (Autobahn App API).
 
-Copyright (c) 2021 Andreas "MrCerealGuy" Zahnleiter <mrcerealguy@gmx.de>
+Copyright (c) 2022 Andreas "MrCerealGuy" Zahnleiter <mrcerealguy@gmx.de>
 
 <img src="screenshot.png" alt="AutobahnMonitor">
 
 ## Download
 
-[Download AutobahnMonitor v1.0](https://github.com/MrCerealGuy/AutobahnMonitor/releases/download/v1.0/AutobahnMonitor_v1.0.zip)
+[Download AutobahnMonitor v1.1](https://github.com/MrCerealGuy/AutobahnMonitor/releases/download/v1.1/AutobahnMonitor_v1.1.zip)

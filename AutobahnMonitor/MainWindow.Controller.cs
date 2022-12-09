@@ -119,7 +119,7 @@ namespace AutobahnMonitor
 
             // Update Browser GIS
             if (lat != "" && longitude != "")
-                webBrowserGIS.Url = new System.Uri($"https://www.openstreetmap.org/?mlat={lat}&mlon={longitude}#map=12/{lat}/{longitude}");
+                webBrowserGIS.Url = new System.Uri($"http://maps.google.com/maps?q={lat},{longitude}&ll={lat},{longitude}&z=14");
         }
     }
 }

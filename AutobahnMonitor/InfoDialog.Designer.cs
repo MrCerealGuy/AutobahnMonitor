@@ -58,7 +58,7 @@ namespace AutobahnMonitor
             this.labelCopyright.Name = "labelCopyright";
             this.labelCopyright.Size = new System.Drawing.Size(209, 13);
             this.labelCopyright.TabIndex = 1;
-            this.labelCopyright.Text = "© 2021 Andreas \"MrCerealGuy\" Zahnleiter";
+            this.labelCopyright.Text = "© 2022 Andreas \"MrCerealGuy\" Zahnleiter";
             // 
             // linkLabelGithub
             // 

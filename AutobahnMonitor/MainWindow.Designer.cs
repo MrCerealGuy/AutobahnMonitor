@@ -70,7 +70,6 @@ namespace AutobahnMonitor
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.infoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.MinimumSize = new System.Drawing.Size(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1008, 24);
             this.menuStrip1.TabIndex = 0;
@@ -162,9 +161,10 @@ namespace AutobahnMonitor
             this.webBrowserGIS.Location = new System.Drawing.Point(3, 490);
             this.webBrowserGIS.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowserGIS.Name = "webBrowserGIS";
+            this.webBrowserGIS.ScriptErrorsSuppressed = true;
             this.webBrowserGIS.Size = new System.Drawing.Size(1002, 342);
             this.webBrowserGIS.TabIndex = 10;
-            this.webBrowserGIS.Url = new System.Uri("https://www.openstreetmap.org/#map=6/51.193/10.437", System.UriKind.Absolute);
+            this.webBrowserGIS.Url = new System.Uri("https://www.google.com/maps", System.UriKind.Absolute);
             // 
             // tableLayoutPanelMainWindow
             // 
@@ -457,7 +457,7 @@ namespace AutobahnMonitor
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "AutobahnMonitor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AutobahnMonitor v1.0 - Andreas Zahnleiter - Free to use";
+            this.Text = "AutobahnMonitor v1.1 - Andreas Zahnleiter - Free to use";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tableLayoutPanelMainWindow.ResumeLayout(false);

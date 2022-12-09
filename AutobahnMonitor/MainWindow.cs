@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 using static AutobahnMonitor.MyGlobals;
@@ -11,6 +13,11 @@ namespace AutobahnMonitor
         {
             InitializeComponent();
             InitAutobahnUI();
+
+            resetAllServiceButtonColor();
+            btnQueryRoadworks.BackColor = colorHighlightedServiceButton;
+
+            queryServiceButtonHandler("Baustellen");
         }
 
         private void listBoxObjects_SelectedIndexChanged(object sender, EventArgs e)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json.Linq;
 
 using static AutobahnMonitor.MyGlobals;
@@ -119,7 +120,7 @@ namespace AutobahnMonitor
 
             // Update Browser GIS
             if (lat != "" && longitude != "")
-                webBrowserGIS.Url = new System.Uri($"http://maps.google.com/maps?q={lat},{longitude}&ll={lat},{longitude}&z=14");
+                webBrowserGIS.Source = new System.Uri($"http://maps.google.com/maps?q={lat},{longitude}&ll={lat},{longitude}&z=14");
         }
     }
 }

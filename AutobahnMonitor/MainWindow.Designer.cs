@@ -39,7 +39,6 @@ namespace AutobahnMonitor
             this.labelRoadService = new System.Windows.Forms.Label();
             this.labelServiceDetails = new System.Windows.Forms.Label();
             this.labelWebcam = new System.Windows.Forms.Label();
-            this.webBrowserGIS = new System.Windows.Forms.WebBrowser();
             this.tableLayoutPanelMainWindow = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPaneServiceButtons = new System.Windows.Forms.TableLayoutPanel();
             this.labelWarnings = new System.Windows.Forms.Label();
@@ -58,11 +57,13 @@ namespace AutobahnMonitor
             this.labelRoad = new System.Windows.Forms.Label();
             this.comboBoxRoad = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanelDetails = new System.Windows.Forms.TableLayoutPanel();
+            this.webBrowserGIS = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanelMainWindow.SuspendLayout();
             this.tableLayoutPaneServiceButtons.SuspendLayout();
             this.tableLayoutPanelRoad.SuspendLayout();
             this.tableLayoutPanelDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webBrowserGIS)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -155,24 +156,13 @@ namespace AutobahnMonitor
             this.labelWebcam.Text = "Webcam";
             this.labelWebcam.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // webBrowserGIS
-            // 
-            this.webBrowserGIS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowserGIS.Location = new System.Drawing.Point(3, 490);
-            this.webBrowserGIS.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowserGIS.Name = "webBrowserGIS";
-            this.webBrowserGIS.ScriptErrorsSuppressed = true;
-            this.webBrowserGIS.Size = new System.Drawing.Size(1002, 342);
-            this.webBrowserGIS.TabIndex = 10;
-            this.webBrowserGIS.Url = new System.Uri("https://www.google.com/maps", System.UriKind.Absolute);
-            // 
             // tableLayoutPanelMainWindow
             // 
             this.tableLayoutPanelMainWindow.ColumnCount = 1;
             this.tableLayoutPanelMainWindow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelMainWindow.Controls.Add(this.webBrowserGIS, 0, 3);
             this.tableLayoutPanelMainWindow.Controls.Add(this.tableLayoutPaneServiceButtons, 0, 1);
             this.tableLayoutPanelMainWindow.Controls.Add(this.tableLayoutPanelRoad, 0, 0);
-            this.tableLayoutPanelMainWindow.Controls.Add(this.webBrowserGIS, 0, 3);
             this.tableLayoutPanelMainWindow.Controls.Add(this.tableLayoutPanelDetails, 0, 2);
             this.tableLayoutPanelMainWindow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelMainWindow.Location = new System.Drawing.Point(0, 24);
@@ -444,6 +434,19 @@ namespace AutobahnMonitor
             this.tableLayoutPanelDetails.Size = new System.Drawing.Size(1002, 341);
             this.tableLayoutPanelDetails.TabIndex = 1;
             // 
+            // webBrowserGIS
+            // 
+            this.webBrowserGIS.AllowExternalDrop = true;
+            this.webBrowserGIS.CreationProperties = null;
+            this.webBrowserGIS.DefaultBackgroundColor = System.Drawing.Color.White;
+            this.webBrowserGIS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowserGIS.Location = new System.Drawing.Point(117, 555);
+            this.webBrowserGIS.Name = "webBrowserGIS";
+            this.webBrowserGIS.Size = new System.Drawing.Size(442, 230);
+            this.webBrowserGIS.Source = new System.Uri("https://www.google.com/maps", System.UriKind.Absolute);
+            this.webBrowserGIS.TabIndex = 12;
+            this.webBrowserGIS.ZoomFactor = 1D;
+            // 
             // AutobahnMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -457,7 +460,8 @@ namespace AutobahnMonitor
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "AutobahnMonitor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AutobahnMonitor v1.1 - Andreas Zahnleiter - Free to use";
+            this.Text = "AutobahnMonitor v1.2 - Andreas Zahnleiter - Free to use";
+            this.Load += new System.EventHandler(this.AutobahnMonitor_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tableLayoutPanelMainWindow.ResumeLayout(false);
@@ -467,6 +471,7 @@ namespace AutobahnMonitor
             this.tableLayoutPanelRoad.PerformLayout();
             this.tableLayoutPanelDetails.ResumeLayout(false);
             this.tableLayoutPanelDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webBrowserGIS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -483,7 +488,6 @@ namespace AutobahnMonitor
         private System.Windows.Forms.Label labelRoadService;
         private System.Windows.Forms.Label labelServiceDetails;
         private System.Windows.Forms.Label labelWebcam;
-        private System.Windows.Forms.WebBrowser webBrowserGIS;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMainWindow;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelRoad;
         private System.Windows.Forms.Label labelRoad;
@@ -502,6 +506,7 @@ namespace AutobahnMonitor
         private System.Windows.Forms.Button btnQueryClosures;
         private System.Windows.Forms.Button btnQueryElectricChargingStations;
         private System.Windows.Forms.Button btnQueryWarnings;
+        private Microsoft.Web.WebView2.WinForms.WebView2 webBrowserGIS;
     }
 }
 
